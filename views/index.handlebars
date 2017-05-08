@@ -23,7 +23,7 @@
 </form>
 
 <ul>
-  {{#each burger}}
+  {{#each dbBurger}}
     {{#unless this.devoured}}
       <li class = "uneaten">
        {{this.burger_name}}
@@ -41,7 +41,7 @@
 <h2> Burgers Eaten: </h2>
 
 <ul>
-  {{#each burger}}
+  {{#each dbBurger}}
     {{#if this.devoured}}
       <li class = "eaten">
       {{this.burger_name}}

@@ -1,21 +1,17 @@
 var db = require("../models");
-var express = require("express");
 
-// Routes
-// =============================================================
 module.exports = function(app) {
 
   // GET route for getting all of the burgers
-  app.get("/api/burgers", function(req, res) {
+  app.get("/burgers", function(req, res) {
     // findAll returns all entries for a table when used with no options
     db.Burger.findAll({}).then(function(dbBurger) {
       // We have access to the todos as an argument inside of the callback function
-      /*var hbsObject = {
-        Burger: dbBurger
+      var hbsObject = {
+        dbBurger: dbBurger
       }
       console.log(hbsObject);
-      res.render("index", hbsObject);*/
-      res.json(dbBurger);
+      res.render("index", hbsObject);
     });
   });
 
@@ -28,8 +24,9 @@ module.exports = function(app) {
       burger_name: req.body.burger_name,
       devoured: req.body.devoured
     }).then(function(dbBurger) {
+      res.redirect("/burgers");
       // We have access to the new todo as an argument inside of the callback function
-      res.json(dbBurger);
+      //res.json(dbBurger);
       //res.render("index", dbBurger);
     });
   });
@@ -50,17 +47,14 @@ module.exports = function(app) {
 
   // PUT route for updating todos. We can get the updated todo data from req.body
   app.put("/:id", function(req, res) {
-    // Update takes in an object describing the properties we want to update, and
-    // we use where to describe which objects we want to update
     db.Burger.update({
-      burger_name: req.body.burger_name,
       devoured: req.body.devoured
     }, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(dbBurger) {
-      res.json(dbBurger);
+      res.redirect("/burgers");
     });
   });
 
