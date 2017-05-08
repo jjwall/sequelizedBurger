@@ -46,9 +46,9 @@
       <li class = "eaten">
       {{this.burger_name}}
 
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="false">
-          <button type="submit">Regurgitate!</button>
+        <form action="/{{this.id}}?_method=DELETE" method="POST">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <button type="submit">Throw Away!</button>
         </form>
 
       </li>
