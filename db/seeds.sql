@@ -9,3 +9,5 @@ INSERT INTO burgers (burger_name, devoured) VALUES ('Grass Fed Beef Burger', fal
 USE burger_db2;
 
 SELECT * FROM burgers;
+
+create database gigly_db;
